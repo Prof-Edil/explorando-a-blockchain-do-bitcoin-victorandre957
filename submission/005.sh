@@ -9,6 +9,6 @@ pubKeys=$(echo $transaction | jq -r '.vin[].txinwitness[1]')
 
 pubKeysList=$(echo $pubKeys | sed 's/ /", "/g' | sed 's/^/["/;s/$/"]/')
 
-P2SHAddress=$(bitcoin-cli createmultisig 1 "$pubKeysList" "legacy" | jq -r .address)
+P2SHAddress=$(bitcoin-cli createmultisig 1 "$pubKeysList" | jq -r .address)
 
 echo $P2SHAddress
